@@ -1,6 +1,7 @@
-import { Phone } from '@mui/icons-material'
-import { Box, Button, TextField, createTheme, styled } from '@mui/material'
+import { Palette, Phone } from '@mui/icons-material'
+import { Box, Button, TextField, Typography, createTheme, styled } from '@mui/material'
 import React, { useEffect, useState } from 'react'
+import { inherits } from 'util'
 
 interface INPUT_DATA_TYPE {
     id: string,
@@ -93,7 +94,7 @@ const RegisterForm = ({ updateTable, filledData, setFilledData }: Props) => {
 
     return (
         <div className='text-center items-center flex  flex-col w-screen overflow-auto mx-auto '>
-            <h1 className='text-3xl py-5'>Registration Form</h1>
+            <Typography variant={'h1'} sx={{ fontSize: {xs:"35px", md: "40px", lg: "60px"}}} color={'secondary'} className='text-3xl py-5 '>Registration Form</Typography>
             <Box id='form'  component="form" autoComplete='off' sx={{ display: "flex", flexDirection: "column", gap: "15px", padding: "20px 10px" , alignItems: "center", width: {xs:"80%", md: "50%", lg: "40%"}}} onSubmit={(e) => handleSubmit(e)}>
                 <TextField fullWidth name="f_name" label="First Name" variant="outlined" value={input.f_name} onChange={handleChange} />
                 <TextField fullWidth name="l_name" label="Last Name" variant="outlined" onChange={handleChange} value={input.l_name} />
