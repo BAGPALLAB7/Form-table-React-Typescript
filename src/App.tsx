@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SimpleTableComponent from './components/SimpleTableComponent'
 import RegisterForm from './components/RegisterForm'
-
-interface INPUT_DATA_TYPE {
-  id: string,
-  f_name: string,
-  l_name: string,
-  email: string,
-  phone: string,
-  address: string
-}
+import {INPUT_DATA_TYPE} from "./utils/Types"
 
 const App = () => {
   const [tableData, setTableData] = useState<INPUT_DATA_TYPE[]>();
@@ -26,8 +18,8 @@ const App = () => {
 
   }
 
-  const updateTable = (newTableData: INPUT_DATA_TYPE, isEdit: boolean) => {
-    if (isEdit) {
+  const updateTable = (newTableData: INPUT_DATA_TYPE , isEdit: boolean) => {
+    if (isEdit ) {
       setTableData(prev => {
         console.log("previous length :", prev?.length);
 

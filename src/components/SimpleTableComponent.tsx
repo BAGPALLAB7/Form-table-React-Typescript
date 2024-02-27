@@ -3,15 +3,7 @@ import { TABLE_HEADING } from '../utils/TableHeading'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Container } from '@mui/material';
-
-interface INPUT_DATA_TYPE {
-  id: string,
-  f_name: string ,
-  l_name: string,
-  email: string,
-  phone: string ,
-  address: string
-}
+import {INPUT_DATA_TYPE} from "../utils/Types"
 
 type tableprops = 
 {data : INPUT_DATA_TYPE[] | undefined,

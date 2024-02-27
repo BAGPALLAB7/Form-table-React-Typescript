@@ -1,31 +1,15 @@
-import { Palette, Phone } from '@mui/icons-material'
 import { Box, Button, TextField, Typography, createTheme, styled } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { inherits } from 'util'
+import {INPUT_DATA_TYPE} from "../utils/Types"
 
-interface INPUT_DATA_TYPE {
-    id: string,
-    f_name: string,
-    l_name: string,
-    email: string,
-    phone: string,
-    address: string
-}
+
 type Props = {
-    updateTable: (newTableData: INPUT_DATA_TYPE, isEdit: boolean) => void,
+    updateTable: (newTableData: INPUT_DATA_TYPE , isEdit: boolean) => void,
     filledData: INPUT_DATA_TYPE | null,
     setFilledData: React.Dispatch<React.SetStateAction<INPUT_DATA_TYPE | null>>
 
 }
 
-let initial_state: INPUT_DATA_TYPE = {
-    id: '',
-    f_name: '',
-    l_name: '',
-    email: '',
-    phone: '',
-    address: ''
-}
 
 
 const RegisterForm = ({ updateTable, filledData, setFilledData }: Props) => {
@@ -34,7 +18,7 @@ const RegisterForm = ({ updateTable, filledData, setFilledData }: Props) => {
     //console.log("initial_state : ",initial_state);
 
 
-    const [input, setInput] = useState(initial_state)
+    const [input, setInput] = useState<INPUT_DATA_TYPE>({} as INPUT_DATA_TYPE)
 
     useEffect(() => {
         if (filledData)
@@ -66,12 +50,12 @@ const RegisterForm = ({ updateTable, filledData, setFilledData }: Props) => {
         if(filledData){
             updateTable(input, true);
         setFilledData(null)
-        setInput(initial_state);
+        setInput({} as INPUT_DATA_TYPE);
         }
         else{
             updateTable(input, false)
 
-            setInput(initial_state);
+            setInput({} as INPUT_DATA_TYPE);
         }
         
 
@@ -96,7 +80,7 @@ const RegisterForm = ({ updateTable, filledData, setFilledData }: Props) => {
         <div className='text-center items-center flex  flex-col w-screen overflow-auto mx-auto '>
             <Typography variant={'h1'} sx={{ fontSize: {xs:"35px", md: "40px", lg: "60px"}}} color={'secondary'} className='text-3xl py-5 '>Registration Form</Typography>
             <Box id='form'  component="form" autoComplete='off' sx={{ display: "flex", flexDirection: "column", gap: "15px", padding: "20px 10px" , alignItems: "center", width: {xs:"80%", md: "50%", lg: "40%"}}} onSubmit={(e) => handleSubmit(e)}>
-                <TextField fullWidth name="f_name" label="First Name" variant="outlined" value={input.f_name} onChange={handleChange} />
+                <TextField fullWidth name="f_name" label="First Name" variant="outlined" value={input?.f_name } onChange={handleChange} />
                 <TextField fullWidth name="l_name" label="Last Name" variant="outlined" onChange={handleChange} value={input.l_name} />
                 <TextField fullWidth name="email" label="Email" variant="outlined" onChange={handleChange} value={input.email} disabled={filledData ? true : false} />
                 <TextField fullWidth name="phone" type="phone" label="Phone" variant="outlined" onChange={handleChange} value={input.phone} />
